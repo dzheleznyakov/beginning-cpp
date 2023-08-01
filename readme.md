@@ -1,21 +1,13 @@
 # How to compile
 
-To compile a `.cpp` file, run the following command:
+To compile a `.cpp` file, run the following script from the project root directory:
 ```bash
-g++ <path>/<filename>.cpp -std=c++17 -o data/<filename>
+./start.sh <cppfilepath> [-c]
 ```
-
-To run the compiled binary file, run
-```bash
-./data/<filename>
-```
-
-To compile and run the binary right after that, run
-```bash
-g++ <path>/<filename>.cpp -std=c++17 -o data/<filename> && ./data/<filename>
-```
+where optional parameter `c` flags that the file should be compiled first. 
+Running the script without the parameter will fun the already compiled version.
 
 For example:
 ```bash
-g++ chapter-02/examples/Ex2_06.cpp -std=c++17 -o data/Ex2_06 && ./data/Ex2_06
+./start.sh chapter-02/examples/Ex2_06.cpp -c
 ```
