@@ -52,7 +52,7 @@ int main() {
         static_cast<unsigned int>(green) & static_cast<unsigned int>(Color::Blue)
     };
 
-    std::cout << "Value 'green' is (hex) : " << std::hex << static_cast<unsigned int>(green)
+    std::cout << "Value 'green' is  (hex) : " << std::hex << static_cast<unsigned int>(green)
               << "\n                  (rgb) : (" << std::dec << green_r << " " << green_g << " " << green_b << ")"
               << std::endl;
 }

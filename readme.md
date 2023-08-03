@@ -11,3 +11,8 @@ For example:
 ```bash
 ./start.sh chapter-02/examples/Ex2_06.cpp -c
 ```
+
+To compile all `.cpp` files, run
+```bash
+find chapter-0* -name "*.cpp" -print0 | xargs -0 -I{} ./start.sh {} -co
+```

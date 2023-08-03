@@ -12,11 +12,14 @@ filename=${filepath##*$delim}
 delim="."
 filename=${filename%%$delim*}
 
-if [[ ( $# -eq 2 && $2 -eq "-c" ) ]]
+if [[ ( $# -eq 2 && ( $2 -eq "-c" || $2 == "-co" ) ) ]]
 then
     eval "g++ $filepath -std=c++14 -o data/$filename"
     echo "File $filepath has been compiled"
     echo ""
 fi
 
-eval "./data/$filename"
+if [[ ($# -lt 2 || $2 != "-co") ]]
+then
+    eval "./data/$filename"
+fi
