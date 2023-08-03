@@ -14,5 +14,5 @@ For example:
 
 To compile all `.cpp` files, run
 ```bash
-find chapter-0* -name "*.cpp" -print0 | xargs -0 -I{} ./start.sh {} -co
+find chapter-* -name "*.cpp" -print0 | xargs -0 -I{} ./start.sh {} -co
 ```
