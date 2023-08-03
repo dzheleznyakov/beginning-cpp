@@ -1,10 +1,6 @@
 #include <iostream>
-#include <bitset>
-#include <limits>
 
 int main() {
-    // int num = std::numeric_limits<int>::max();
-    // std::cout << std::bitset<32>(num) << std::endl;
     char ch1 {}, ch2 {}, ch3 {}, ch4 {};
     std::cout << "Enter 4 characters: ";
     std::cin >> ch1 >> ch2 >> ch3 >> ch4;
