@@ -2,7 +2,7 @@
 
 if [[ ( $# -lt 1 || $# -gt 2 ) ]] 
 then
-   echo "Usage: start.sh <cpp-14-file> [-c]"
+   echo "Usage: start.sh <cpp-14-file> [-c][-co]"
    exit 0
 fi
 
