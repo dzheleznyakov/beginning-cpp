@@ -1,34 +1,19 @@
-// Combining logical operators for loan approval
+// Using the conditional operator to select output
 #include <iostream>
 
-int main()
+int main() 
 {
-    int age {};
-    int income {};
-    int balance {};
+    int mice {};
+    int brown {};
+    int white {};
 
-    std::cout << "Please enter your age in years: ";
-    std::cin >> age;
-    std::cout << "Please enter your annual income in dollars: ";
-    std::cin >> income;
-    std::cout << "What is your current account balance in dollars: ";
-    std::cin >> balance;
+    std::cout << "How many brown mice do you have? ";
+    std::cin >> brown;
+    std::cout << "How many white mice do you have? ";
+    std::cin >> white;
 
-    if (age >= 21 && (income > 25000 || balance > 100000))
-    {
-        int loan {};
-        if (2 * income < balance / 2) 
-        {
-            loan = 2 * income;
-        }
-        else
-        {
-            loan = balance / 2;
-        }
-        std::cout << "You can borrow up to $" << loan << "." << std::endl;
-    }
-    else
-    {
-        std::cout << "Unfortunately, you don't qualify for loan." << std::endl;
-    }
+    mice = brown + white;
+    std::cout << "You have " << mice
+              << (mice == 1 ? " mouse " : " mice ")
+              << "in total." << std::endl;
 }
