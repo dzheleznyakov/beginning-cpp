@@ -20,6 +20,5 @@ int main()
     {
         if (height[i] < average) ++count;
     }
-    std::cout << count << " people are below average height.";
-    
+    std::cout << count << " people are below average height." << std::enl;
 }
