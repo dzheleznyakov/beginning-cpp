@@ -21,5 +21,5 @@ int main()
                   << std::hex << std::setw(12) << static_cast<int>(ch)
                   << std::dec << std::setw(10) << static_cast<int>(ch)
                   << std::endl;
-    } while (ch++ < std::numeric_limits<unsigned char>::max());
+    } while (ch++ < std::numeric_limits<unsigned char>::max() 1);
 }
