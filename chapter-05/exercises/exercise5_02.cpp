@@ -2,7 +2,7 @@
     Write a program that uses a while loop to accumulate
     the sum of an arbitrary number of integers that are entered by the user.
     The program should output the total of all the values
-    and the overal average as a floating-point value.
+    and the overall average as a floating-point value.
 */
 #include <iostream>
 
