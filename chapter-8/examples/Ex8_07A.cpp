@@ -17,8 +17,6 @@ int main()
     std::cout << "Enter some text terminated by *:\n";
     std::getline(std::cin, text, '*');
 
-    vector<string> words;
-
     list_words(find_words(text));
 }
 
