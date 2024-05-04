@@ -8,7 +8,7 @@
 using std::string;
 using std::vector;
 
-std::shared_ptr<vector<string>> find_words(const string &str, const string &separators);
+std::shared_ptr<vector<string>> find_words(const string &str);
 void list_words(const std::shared_ptr<vector<string>> pWords);
 
 int main()
@@ -17,17 +17,17 @@ int main()
     std::cout << "Enter some text terminated by *:\n";
     std::getline(std::cin, text, '*');
 
-    const string separators{" ,;:.\"!?'\n-"};
     vector<string> words;
 
-    list_words(find_words(text, separators));
+    list_words(find_words(text));
 }
 
-std::shared_ptr<vecotr<string>> find_words(const string &str, const string &separators)
+std::shared_ptr<vecotr<string>> find_words(const string &str)
 {
     auto pWords = std::make_shared<vector<string>>();
     size_t start{str.find_first_not_of(separators)};
     size_t end{};
+    const string separators{" ,;:.\"!?'\n-"};
 
     while (start != string::npos)
     {
