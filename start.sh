@@ -9,7 +9,7 @@ fi
 if [[ ($# -eq 1 && $1 == "--help") ]]
 then
     echo ""
-    echo "Usage: ./start.sh [--help | <cpp-14-file> [-c][-co][--args arg1 arg2 ...]]"
+    echo "Usage: ./start.sh [--help | [<cpp-14-file-1> <cpp-14-file-2> ...] [-c][-co][--args arg1 arg2 ...]]"
     echo ""
     echo "Commands:"
     echo "  --help                  Print out help info"
@@ -24,11 +24,38 @@ then
     exit 0
 fi
 
-filepath=$1
-delim="/"
-filename=${filepath##*$delim}
-delim="."
-filename=${filename%%$delim*}
+args_remain=false
+filepaths=""
+filename=""
+first_filepath=""
+for var in "$@"
+do
+    if [ $args_remain == true ]
+    then
+        break
+    fi
+    if [ $var == "--args" ]
+    then
+        args_remain=true
+    elif [[ "$var" == -* ]]
+    then
+        continue
+    else
+        filepath=$var
+        filepaths="${filepaths} $filepath"
+        if [ "$first_filepath" == "" ]
+        then
+            first_filepath=$filepath
+        fi
+        if [ "$filename" == "" ]
+        then
+            delim="/"
+            filename=${filepath##*$delim}
+            delim="."
+            filename=${filename%%$delim*}
+        fi
+    fi
+done
 
 should_compile=false
 should_run=true
@@ -58,8 +85,8 @@ do
 done
 
 compile() {
-    eval "g++ $filepath -std=c++14 -o data/$filename"
-    echo "File $filepath has been compiled"
+    eval "g++ $filepaths -std=c++14 -o data/$filename"
+    echo "File $first_filepath has been compiled"
     echo "" 
 }
 
