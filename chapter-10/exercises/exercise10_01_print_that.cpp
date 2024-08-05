@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include "exercise10_01.h"
+#include "exercise10_01_print.h"
+#include "exercise10_01_print_that.h"
 
 void print_that(const std::string &s)
 {
