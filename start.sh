@@ -9,7 +9,7 @@ fi
 if [[ ($# -eq 1 && $1 == "--help") ]]
 then
     echo ""
-    echo "Usage: ./start.sh [--help | [<cpp-14-file-1> <cpp-14-file-2> ...] [-c][-co][--args arg1 arg2 ...]]"
+    echo "Usage: ./start.sh [--help | [<cpp-14-file-1> <cpp-14-file-2> ...] [-c][-co][-all][--args arg1 arg2 ...]]"
     echo ""
     echo "Commands:"
     echo "  --help                  Print out help info"
@@ -18,6 +18,7 @@ then
     echo "Flags:"
     echo "  -c     Compile and run the <cpp-14-file>"
     echo "  -co    Compile the <cpp-14-file>"
+    echo "  -all   Compile/run/etc all the files in the same directory as <cpp-14-file>, which is the main file"
     echo ""
     echo "No flags: run the already compiled version of the <cpp-14-file>"
     echo ""
@@ -59,6 +60,7 @@ done
 
 should_compile=false
 should_run=true
+compile_all_in_directory=false
 args_remain=false
 args=""
 
@@ -78,11 +80,28 @@ do
         should_compile=true
         should_run=false
     fi
+    if [ $var == "-all" ]
+    then
+        compile_all_in_directory=true
+    fi
     if [ $var == "--args" ]
     then
         args_remain=true
     fi
 done
+
+prepare_to_compile_all_in_directory() {
+    dir="$(dirname "$first_filepath")"
+    filepaths=$first_filepath
+
+    for entry in "$dir"/*.cpp
+    do
+        if [ $entry != $first_filepath ]
+        then
+            filepaths="${filepaths} $entry"
+        fi
+    done
+}
 
 compile() {
     eval "g++ $filepaths -std=c++14 -o data/$filename"
@@ -93,6 +112,11 @@ compile() {
 run() {
     eval "./data/$filename$args"
 }
+
+if [ $compile_all_in_directory == true ] 
+then
+    prepare_to_compile_all_in_directory
+fi
 
 if [ $should_compile == true ]
 then
