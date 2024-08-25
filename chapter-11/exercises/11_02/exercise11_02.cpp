@@ -11,7 +11,7 @@
 */
 #include <iostream>
 
-#include "Interger.h"
+#include "Integer.h"
 
 int main()
 {
