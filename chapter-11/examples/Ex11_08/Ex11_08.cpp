@@ -37,7 +37,7 @@ int main()
     pBox->listBox();
     std::cout << std::endl;
     load1.deleteBox(pBox);
-    std::cout << "\nAfter deleting the largest box< the list contains:\n";
+    std::cout << "\nAfter deleting the largest box, the list contains:\n";
     load1.listBoxes();
 
     const size_t nBoxes{20};
