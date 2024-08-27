@@ -26,21 +26,21 @@ Box Box::operator*(int n) const
 
 size_t Box::operator/(const Box &box) const
 {
-    auto divider = [this](double l, double w, double h) -> size_t
+    auto divider = [this](double l, double w, double h) -> int
     {
-        size_t rows{static_cast<size_t>(this->length / l)};
-        size_t columns{static_cast<size_t>(this->width / w)};
-        size_t layers{static_cast<size_t>(this->height / h)};
+        int rows{static_cast<int>(this->length) / static_cast<int>(l)};
+        int columns{static_cast<int>(this->width) / static_cast<int>(w)};
+        int layers{static_cast<int>(this->height) / static_cast<int>(h)};
         return rows * columns * layers;
     };
-    std::vector<size_t> candidates{
+    std::vector<int> candidates{
         divider(box.length, box.width, box.height),
         divider(box.length, box.height, box.width),
         divider(box.width, box.length, box.height),
         divider(box.width, box.height, box.length),
         divider(box.height, box.width, box.length),
         divider(box.height, box.length, box.width)};
-    size_t result = 0;
+    int result = 0;
     for (size_t i{}; i < candidates.size(); ++i)
         if (candidates[i] > result)
             result = candidates[i];
