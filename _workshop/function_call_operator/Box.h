@@ -27,7 +27,7 @@ public:
     double volume()
     {
         Volume volume;
-        return Volume::(length, width, height);
+        return volume(length, width, height);
     }
 };
 
