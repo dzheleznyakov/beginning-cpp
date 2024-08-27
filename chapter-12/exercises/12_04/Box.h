@@ -35,6 +35,7 @@ public:
     Box operator+(const Box &aBox) const;
     Box operator*(int n) const;
     size_t operator/(const Box &box) const;
+    double operator%(const Box &box) const;
 
     void listBox() const;
 
