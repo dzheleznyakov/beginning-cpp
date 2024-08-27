@@ -49,9 +49,7 @@ size_t Box::operator/(const Box &box) const
 
 void Box::listBox() const
 {
-    std::cout << " Box(" << std::setw(2) << length << ","
-              << std::setw(2) << width << ","
-              << std::setw(2) << height << ")";
+    std::cout << *this;
 }
 
 std::ostream &operator<<(std::ostream &stream, const Box &box)
