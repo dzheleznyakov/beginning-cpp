@@ -24,7 +24,7 @@ public:
         std::cout << "Carton(string) is called.\n";
     }
 
-    Carton(const Carton &carton) : material{carton.material}
+    Carton(const Carton &carton) : Box{carton}, material{carton.material}
     {
         std::cout << "Carton(Carton) is called.\n";
     }
