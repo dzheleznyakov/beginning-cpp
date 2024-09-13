@@ -14,6 +14,10 @@ int main()
     hardcase.showVolume();
     carton.showVolume();
 
+    std::cout << std::endl;
+    double hardcaseVolume{hardcase.volume()};
+    std::cout << "hardcase volume is " << hardcaseVolume << std::endl;
+
     Box *pBox{&box};
     std::cout << "\nbox volume through pBox is " << pBox->volume() << std::endl;
     pBox->showVolume();
