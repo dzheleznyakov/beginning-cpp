@@ -24,6 +24,8 @@ int main()
         {
             std::cout << "\"" << message << "\" caught" << std::endl;
         }
-        std::cout << "End of the for loop body (after the catch blocks) - i is " << i << std::endl;
+        std::cout << "End of the for loop body (after the catch blocks) - i is "
+                  << i << "\n"
+                  << std::endl;
     }
 }
