@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include "CurveBall.h"
+
+size_t random(size_t count)
+{
+    return static_cast<size_t>(
+        count * static_cast<unsigned long>(std::rand()) / (RAND_MAX + 1UL));
+}
+
+int main()
+{
+    srand(static_cast<unsigned>(time(0)));
+    size_t error_count{};
+    for (size_t i{}; i < 1000; ++i)
+    {
+        try
+        {
+            size_t num = random(20);
+            bool shouldThrow{num < 5};
+            if (shouldThrow)
+                throw CurveBall{};
+        }
+        catch (CurveBall &ex)
+        {
+            ++error_count;
+        }
+    }
+    std::cout << error_count << " errors were thrown." << std::endl;
+}
