@@ -40,7 +40,7 @@ int main()
     }
     catch (std::exception &ex)
     {
-        std::cerr << typeid(ex).name() << " exception caught in main()! "
+        std::cerr << "\n" << typeid(ex).name() << " exception caught in main()! "
                   << ex.what() << std::endl;
     }
 }
