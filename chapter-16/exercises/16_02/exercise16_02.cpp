@@ -20,29 +20,24 @@ int main()
     Words words;
     extractWords(text, words);
 
-    size_t max_length{getMaxLength(words) + 2};
+    const size_t MAX_LENGTH{getMaxLength(words) + 2};
     const size_t PER_LINE{5};
+    size_t word_in_line_count{};
+
+    auto print = [PER_LINE, MAX_LENGTH, &word_in_line_count](const string &word)
+    {
+        if (word_in_line_count++ % PER_LINE == 0)
+            std::cout << std::endl;
+        std::cout << std::setw(MAX_LENGTH) << word;
+    };
 
     std::cout << "\nWords in sequence:";
-    auto fIterator{words.forward()};
-    size_t word_in_line_count{};
-    while (fIterator.hasNext())
-    {
-        if (word_in_line_count++ % PER_LINE == 0)
-            std::cout << std::endl;
-        std::cout << std::setw(max_length) << fIterator.next();
-    }
-    std::cout << std::endl;
+    words.forEach(print);
 
-    std::cout << "\nWords in reverse:";
-    auto rIterator{words.reverse()};
     word_in_line_count = 0;
-    while (rIterator.hasNext())
-    {
-        if (word_in_line_count++ % PER_LINE == 0)
-            std::cout << std::endl;
-        std::cout << std::setw(max_length) << rIterator.next();
-    }
+    std::cout << "\nWords in reverse:";
+    words.forEachReversed(print);
+
     std::cout << std::endl;
 }
 
@@ -64,12 +59,11 @@ void extractWords(string text, Words &words)
 size_t getMaxLength(const Words &words)
 {
     size_t max_length{};
-    auto iterator{words.forward()};
-    while (iterator.hasNext())
+    auto getMaxLength = [&](const string &word)
     {
-        string word{iterator.next()};
         if (word.length() > max_length)
             max_length = word.length();
-    }
+    };
+    words.forEach(getMaxLength);
     return max_length;
 }
