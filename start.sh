@@ -104,7 +104,9 @@ prepare_to_compile_all_in_directory() {
 }
 
 compile() {
-    eval "g++ $filepaths -std=c++14 -o data/$filename"
+    command="g++ $filepaths -std=c++14 -o data/$filename"
+    echo $command
+    eval $command
     echo "File $first_filepath has been compiled"
     echo "" 
 }
